@@ -26,7 +26,7 @@ const defaultConfig = {
 		fixedHeight: true,
 		windowGlow: false,
 		textGlow: false,
-		opacity: 0.8,
+		opacity: 0.9,
 		blur: 0
 	},
 	prompt: {
