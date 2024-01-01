@@ -25,7 +25,9 @@ const defaultConfig = {
 	terminal: {
 		fixedHeight: true,
 		windowGlow: false,
-		textGlow: false
+		textGlow: false,
+		opacity: 0.8,
+		blur: 0
 	},
 	prompt: {
 		ctrlC: true,
