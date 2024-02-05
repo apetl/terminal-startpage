@@ -17,7 +17,7 @@ const defaultConfig = {
 		"orange": "#fbb185"
 	},
 	wallpaper: {
-		url: "https://pixeldrain.com/api/file/mggJJrq7",
+		url: "https://i.postimg.cc/htDm31d4/Just-a-tree-and-a-breeze.jpg",
 		easing: "ease-in-out",
 		fadeIn: true,
 		blur: false
@@ -26,7 +26,7 @@ const defaultConfig = {
 		fixedHeight: true,
 		windowGlow: false,
 		textGlow: false,
-		opacity: 0.9,
+		opacity: 0.8,
 		blur: 0
 	},
 	prompt: {
@@ -118,8 +118,8 @@ const defaultConfig = {
 						icon: "simple-icons:protonmail"
 					},
 					{
-						name: "Habitica",
-						url: "https://habitica.com",
+						name: "TickTick",
+						url: "https://ticktick.com",
 						icon: "mdi:todo-add"
 					},
 					{
@@ -151,12 +151,12 @@ const defaultConfig = {
 					},
 					{
 						name: "Anime",
-						url: "https://aniwave.to/home/",
+						url: "https://anix.to/home/",
 						icon: "tabler:brand-funimation"
 					},
 					{
 						name: "Manga",
-						url: "https://mangareader.to/home/",
+						url: "https://mangafire.to/home/",
 						icon: "mdi:book"
 					},
 				]
