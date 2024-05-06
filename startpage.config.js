@@ -17,7 +17,7 @@ const defaultConfig = {
 		"orange": "#fbb185"
 	},
 	wallpaper: {
-		url: "https://i.postimg.cc/htDm31d4/Just-a-tree-and-a-breeze.jpg",
+		url: "https://i.postimg.cc/d0fwc8dH/17.jpg",
 		easing: "ease-in-out",
 		fadeIn: true,
 		blur: false
