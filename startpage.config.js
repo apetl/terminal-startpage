@@ -64,7 +64,7 @@ const defaultConfig = {
 		hoverColor: "violet"
 	},
 	search: {
-		default: "https://www.startpage.com/sp/search?query=",
+		default: "https://search.brave.com/search?q=",
 		target: "_self",
 		shortcutRegex: "([A-Za-z0-9]+) (.*)",
 		shortcuts: [
@@ -118,8 +118,8 @@ const defaultConfig = {
 						icon: "simple-icons:protonmail"
 					},
 					{
-						name: "TickTick",
-						url: "https://ticktick.com",
+						name: "Habitica",
+						url: "https://habitica.com",
 						icon: "mdi:todo-add"
 					},
 					{
@@ -129,7 +129,7 @@ const defaultConfig = {
 					},
 					{
 						name: "Search",
-						url: "https://www.startpage.com",
+						url: "https://search.brave.com",
 						icon: "fluent:search-16-filled"
 					}
 				]
@@ -151,7 +151,7 @@ const defaultConfig = {
 					},
 					{
 						name: "Anime",
-						url: "https://anix.to/home/",
+						url: "https://aniwave.to/home/",
 						icon: "tabler:brand-funimation"
 					},
 					{
@@ -182,8 +182,8 @@ const defaultConfig = {
 						icon: "mdi:google-drive"
 					},
 					{
-						name: "Photos",
-						url: "https://photos.google.com",
+						name: "Ente",
+						url: "https://web.ente.io/gallery",
 						icon: "simple-icons:googlephotos"
 					}
 				]
@@ -200,7 +200,7 @@ const defaultConfig = {
 					},
 					{
 						name: "Lofi",
-						url: "https://www.youtube.com/@LofiGirl",
+						url: "https://www.youtube.com/@thesoulofrain5251",
 						icon: "ri:music-fill"
 					},
 					{
