@@ -128,8 +128,8 @@ const defaultConfig = {
 						icon: "simple-icons:protoncalendar"
 					},
 					{
-						name: "Search",
-						url: "https://search.brave.com",
+						name: "Perplexity",
+						url: "https://www.perplexity.ai",
 						icon: "fluent:search-16-filled"
 					}
 				]
