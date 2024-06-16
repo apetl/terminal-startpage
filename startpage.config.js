@@ -17,7 +17,7 @@ const defaultConfig = {
 		"orange": "#fbb185"
 	},
 	wallpaper: {
-		url: "https://i.postimg.cc/3wxgWDNQ/17.jpg",
+		url: "https://i.postimg.cc/GmDNmdb4/17.webp",
 		easing: "ease-in-out",
 		fadeIn: true,
 		blur: false
