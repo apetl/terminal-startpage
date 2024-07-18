@@ -17,7 +17,7 @@ const defaultConfig = {
 		"orange": "#fbb185"
 	},
 	wallpaper: {
-		url: "./public/streamers.webp",
+		url: "https://raw.githubusercontent.com/apetl/terminal-startpage/main/public/streamers.webp",
 		easing: "ease-in-out",
 		fadeIn: true,
 		blur: false
