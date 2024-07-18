@@ -17,7 +17,7 @@ const defaultConfig = {
 		"orange": "#fbb185"
 	},
 	wallpaper: {
-		url: "https://images2.imgbox.com/83/57/DElpR0Be_o.png",
+		url: "./public/streamers.webp",
 		easing: "ease-in-out",
 		fadeIn: true,
 		blur: false
