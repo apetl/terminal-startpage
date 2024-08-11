@@ -19,7 +19,7 @@
 		"url": "https://purple-axolotl.b-cdn.net/vertical-neon.webp",
 		"easing": "ease-in-out",
 		"fadeIn": true,
-		"blur": false
+		"blur": true
 	},
 	"terminal": {
 		"fixedHeight": true,
