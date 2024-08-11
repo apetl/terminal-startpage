@@ -1,49 +1,49 @@
 {
-	"username": "Excalith",
+	"username": "apetl",
 	"theme": {
 		"name": "Default",
-		"backgroundColor": "#121317",
-		"windowColor": "#1e212b",
-		"textColor": "#e2e2e2",
-		"black": "#16161e",
-		"red": "#ec6183",
-		"green": "#2ed8a2",
-		"yellow": "#e8b195",
-		"blue": "#2bc3de",
-		"magenta": "#d1aff8",
-		"cyan": "#62e0e2",
-		"white": "#e2e2e2",
+		"backgroundColor": "#1e1e2e",
+		"windowColor": "#1e1e2e",
+		"textColor": "#cdd6f4",
+		"black": "#45475A",
+		"red": "#f38ba8",
+		"green": "#a6e3a1",
+		"yellow": "#f9e2af",
+		"blue": "#89b4fa",
+		"magenta": "#f5c2e7",
+		"cyan": "#94e2d5",
+		"white": "#bac2de",
 		"gray": "#97989d"
 	},
 	"wallpaper": {
-		"url": "assets/default-wallpaper.svg",
+		"url": "https://purple-axolotl.b-cdn.net/vertical-neon.webp",
 		"easing": "ease-in-out",
 		"fadeIn": true,
 		"blur": false
 	},
 	"terminal": {
 		"fixedHeight": true,
-		"windowGlow": true,
+		"windowGlow": false,
 		"windowGlowColor": "#291f3325",
-		"textGlow": false,
-		"opacity": 0,
+		"textGlow": true,
+		"opacity": 0.8,
 		"blur": 16
 	},
 	"prompt": {
 		"ctrlC": true,
-		"placeholder": "command...",
+		"placeholder": "",
 		"placeholderColor": "gray",
 		"userColor": "green",
 		"atColor": "gray",
 		"hostColor": "magenta",
 		"promptColor": "magenta",
-		"promptSymbol": "❯",
+		"promptSymbol": "$",
 		"caretColor": "green",
 		"selectionBg": "yellow",
 		"selectionFg": "black"
 	},
 	"fetch": {
-		"timeFormat": "HH:mm",
+		"timeFormat": "hh:mm",
 		"dateFormat": "DD/MM/YYYY",
 		"titleColor": "yellow",
 		"image": "assets/default-icon.svg",
@@ -65,7 +65,7 @@
 		"hoverColor": "magenta"
 	},
 	"search": {
-		"default": "https://google.com/search?q=",
+		"default": "https://search.brave.com/search?q=",
 		"target": "_self",
 		"shortcutRegex": "([A-Za-z0-9]+) (.*)",
 		"shortcuts": [
@@ -114,14 +114,117 @@
 				"align": "left",
 				"links": [
 					{
-						"name": "Portfolio",
-						"url": "https://cancellek.com",
-						"icon": "mdi:web"
+						"name": "Mail",
+						"url": "https://mail.proton.me",
+						"icon": "simple-icons:protonmail"
 					},
 					{
-						"name": "Keybase",
-						"url": "https://keybase.io/",
-						"icon": "fa-brands:keybase"
+						"name": "Habitica",
+						"url": "https://habitica.com",
+						"icon": "mdi:todo-add"
+					},
+					{
+						"name": "Calendar",
+						"url": "https://calendar.proton.me",
+						"icon": "simple-icons:protoncalendar"
+					},
+					{
+						"name": "Perplexity",
+						"url": "https://www.perplexity.ai",
+						"icon": "fluent:search-16-filled"
+					}
+				]
+			},
+			{
+				"title": "Media",
+				"color": "magenta",
+				"align": "left",
+				"links": [
+					{
+						"name": "Youtube",
+						"url": "https://youtube.com",
+						"icon": "mdi:youtube"
+					},
+					{
+						"name": "Spotify",
+						"url": "https://open.spotify.com",
+						"icon": "mdi:spotify"
+					},
+					{
+						"name": "Anime",
+						"url": "https://aniwave.to/home/",
+						"icon": "tabler:brand-funimation"
+					},
+					{
+						"name": "Manga",
+						"url": "https://mangafire.to/home/",
+						"icon": "mdi:book"
+					}
+				]
+			},
+			{
+				"title": "Storage",
+				"color": "violet",
+				"align": "left",
+				"links": [
+					{
+						"name": "Filen",
+						"url": "https://drive.filen.io",
+						"icon": "mdi:folder-key"
+					},
+					{
+						"name": "P Drive",
+						"url": "https://drive.proton.me",
+						"icon": "simple-icons:protondrive"
+					},
+					{
+						"name": "G Drive",
+						"url": "https://drive.google.com",
+						"icon": "mdi:google-drive"
+					},
+					{
+						"name": "Ente",
+						"url": "https://web.ente.io/gallery",
+						"icon": "simple-icons:googlephotos"
+					}
+				]
+			},
+			{
+				"title": "Study",
+				"color": "cyan",
+				"align": "left",
+				"links": [
+					{
+						"name": "Brightspace",
+						"url": "https://brightspace.brocku.ca/",
+						"icon": "uil:university"
+					},
+					{
+						"name": "Lofi",
+						"url": "https://www.youtube.com/@thesoulofrain5251",
+						"icon": "ri:music-fill"
+					},
+					{
+						"name": "Flocus",
+						"url": "https://app.flocus.com/",
+						"icon": "mdi:tilde"
+					},
+					{
+						"name": "Office",
+						"url": "https://www.office.com/",
+						"icon": "mdi:microsoft-office"
+					}
+				]
+			},
+			{
+				"title": "Dev",
+				"color": "red",
+				"align": "left",
+				"links": [
+					{
+						"name": "Github",
+						"url": "https://github.com/",
+						"icon": "mingcute:github-fill"
 					},
 					{
 						"name": "GPT",
@@ -129,144 +232,41 @@
 						"icon": "simple-icons:openai"
 					},
 					{
-						"name": "OCI",
-						"url": "https://www.oracle.com/cloud/",
+						"name": "Oracle",
+						"url": "https://cloud.oracle.com/",
 						"icon": "simple-icons:oracle"
+					},
+					{
+						"name": "Daily Dev",
+						"url": "https://app.daily.dev",
+						"icon": "tabler:terminal"
 					}
 				]
 			},
 			{
-				"title": "Dev",
-				"color": "magenta",
-				"align": "left",
-				"links": [
-					{
-						"name": "GitHub",
-						"url": "https://github.com",
-						"icon": "mdi:github"
-					},
-					{
-						"name": "GitLab",
-						"url": "https://gitlab.com",
-						"icon": "ph:gitlab-logo-simple-fill"
-					},
-					{
-						"name": "Dev.to",
-						"url": "https://dev.to",
-						"icon": "material-symbols:logo-dev"
-					},
-					{
-						"name": "Stack Overflow",
-						"url": "https://stackoverflow.com/",
-						"icon": "mdi:stack-overflow"
-					}
-				]
-			},
-			{
-				"title": "Social",
-				"color": "cyan",
-				"align": "left",
-				"links": [
-					{
-						"name": "Twitter",
-						"url": "https://twitter.com",
-						"icon": "mdi:twitter"
-					},
-					{
-						"name": "Mastodon",
-						"url": "https://mastodon.social/",
-						"icon": "ri:mastodon-fill"
-					},
-					{
-						"name": "Reddit",
-						"url": "https://reddit.com",
-						"icon": "mdi:reddit"
-					},
-					{
-						"name": "Polywork",
-						"url": "https://polywork.com",
-						"icon": "simple-icons:polywork"
-					}
-				]
-			},
-			{
-				"title": "Gaming",
-				"color": "red",
-				"align": "left",
-				"links": [
-					{
-						"name": "Polygon",
-						"url": "https://polygon.com",
-						"icon": "uil:polygon"
-					},
-					{
-						"name": "IGN",
-						"url": "https://ign.com",
-						"icon": "mdi:currency-sign"
-					},
-					{
-						"name": "RPS",
-						"url": "https://rockpapershotgun.com/",
-						"icon": "ph:toilet-paper-bold"
-					},
-					{
-						"name": "80lv",
-						"url": "https://80.lv/",
-						"icon": "tabler:hand-rock"
-					}
-				]
-			},
-			{
-				"title": "Science",
+				"title": "Other",
 				"color": "blue",
 				"align": "left",
 				"links": [
 					{
-						"name": "PopSci",
-						"url": "https://popsci.com/",
-						"icon": "material-symbols:science"
+						"name": "Catppuccin",
+						"url": "https://github.com/catppuccin/catppuccin",
+						"icon": "solar:cat-bold"
 					},
 					{
-						"name": "Space",
-						"url": "fa6-solid:user-astronaut",
+						"name": "Reddit",
+						"url": "https://www.reddit.com",
 						"icon": "mdi:reddit"
 					},
 					{
-						"name": "NASA",
-						"url": "https://blogs.nasa.gov/",
-						"icon": "simple-icons:nasa"
+						"name": "Netflix",
+						"url": "https://www.netflix.com/browse",
+						"icon": "mdi:netflix"
 					},
 					{
-						"name": "ESA",
-						"url": "https://blogs.esa.int/",
-						"icon": "mdi:black-mesa"
-					}
-				]
-			},
-			{
-				"title": "Tech",
-				"color": "yellow",
-				"align": "left",
-				"links": [
-					{
-						"name": "TechCrunch",
-						"url": "https://techcrunch.com/",
-						"icon": "game-icons:techno-heart"
-					},
-					{
-						"name": "Verge",
-						"url": "https://www.theverge.com/",
-						"icon": "arcticons:verge"
-					},
-					{
-						"name": "It's Foss",
-						"url": "https://itsfoss.com/",
-						"icon": "ri:mastodon-fill"
-					},
-					{
-						"name": "9To5 Linux",
-						"url": "https://9to5linux.com/",
-						"icon": "uil:linux"
+						"name": "Bunny",
+						"url": "https://dash.bunny.net",
+						"icon": "mdi:rabbit"
 					}
 				]
 			}
