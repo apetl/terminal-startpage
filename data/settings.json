@@ -78,7 +78,7 @@
 				"alias": "k",
 				"name": "Kagi",
 				"url": "https://kagi.com/?q={}"
-			},
+			}
 		]
 	},
 	"sections": {
