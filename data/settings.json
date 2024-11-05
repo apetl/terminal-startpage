@@ -65,46 +65,9 @@
 		"hoverColor": "magenta"
 	},
 	"search": {
-		"default": "https://search.brave.com/search?q=",
+		"default": "https://kagi.com/search?q=",
 		"target": "_self",
 		"shortcutRegex": "([A-Za-z0-9]+) (.*)",
-		"shortcuts": [
-			{
-				"alias": "g",
-				"name": "Google Search",
-				"url": "https://google.com/search?q={}"
-			},
-			{
-				"alias": "d",
-				"name": "DuckDuckGo Search",
-				"url": "https://duckduckgo.com/?q={}"
-			},
-			{
-				"alias": "b",
-				"name": "Brave Search",
-				"url": "https://search.brave.com/search?q={}"
-			},
-			{
-				"alias": "gh",
-				"name": "Github Search",
-				"url": "https://github.com/search?q={}"
-			},
-			{
-				"alias": "s",
-				"name": "Stack Overflow Search",
-				"url": "https://stackoverflow.com/search?q={}"
-			},
-			{
-				"alias": "r",
-				"name": "Subreddit Search",
-				"url": "https://reddit.com/r/{}"
-			},
-			{
-				"alias": "w",
-				"name": "Wikipedia Search",
-				"url": "https://en.wikipedia.org/wiki/{}"
-			}
-		]
 	},
 	"sections": {
 		"list": [
@@ -129,8 +92,8 @@
 						"icon": "simple-icons:protoncalendar"
 					},
 					{
-						"name": "Perplexity",
-						"url": "https://www.perplexity.ai",
+						"name": "Kagi",
+						"url": "https://kagi.com",
 						"icon": "fluent:search-16-filled"
 					}
 				]
@@ -146,13 +109,13 @@
 						"icon": "mdi:youtube"
 					},
 					{
-						"name": "Spotify",
-						"url": "https://open.spotify.com",
+						"name": "YT Music",
+						"url": "https://music.youtube.com",
 						"icon": "mdi:spotify"
 					},
 					{
 						"name": "Anime",
-						"url": "https://aniwave.to/home/",
+						"url": "https://hianime.to/home/",
 						"icon": "tabler:brand-funimation"
 					},
 					{
@@ -178,14 +141,14 @@
 						"icon": "simple-icons:protondrive"
 					},
 					{
-						"name": "G Drive",
-						"url": "https://drive.google.com",
-						"icon": "mdi:google-drive"
-					},
-					{
 						"name": "Ente",
 						"url": "https://web.ente.io/gallery",
 						"icon": "simple-icons:googlephotos"
+					},
+					{
+						"name": "G Drive",
+						"url": "https://drive.google.com",
+						"icon": "mdi:google-drive"
 					}
 				]
 			},
@@ -228,7 +191,7 @@
 					},
 					{
 						"name": "GPT",
-						"url": "https://chat.openai.com/",
+						"url": "https://platform.openai.com/",
 						"icon": "simple-icons:openai"
 					},
 					{
