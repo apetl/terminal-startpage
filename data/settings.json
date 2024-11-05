@@ -75,35 +75,10 @@
 				"url": "https://google.com/search?q={}"
 			},
 			{
-				"alias": "d",
-				"name": "DuckDuckGo Search",
-				"url": "https://duckduckgo.com/?q={}"
+				"alias": "k",
+				"name": "Kagi",
+				"url": "https://kagi.com/?q={}"
 			},
-			{
-				"alias": "b",
-				"name": "Brave Search",
-				"url": "https://search.brave.com/search?q={}"
-			},
-			{
-				"alias": "gh",
-				"name": "Github Search",
-				"url": "https://github.com/search?q={}"
-			},
-			{
-				"alias": "s",
-				"name": "Stack Overflow Search",
-				"url": "https://stackoverflow.com/search?q={}"
-			},
-			{
-				"alias": "r",
-				"name": "Subreddit Search",
-				"url": "https://reddit.com/r/{}"
-			},
-			{
-				"alias": "w",
-				"name": "Wikipedia Search",
-				"url": "https://en.wikipedia.org/wiki/{}"
-			}
 		]
 	},
 	"sections": {
