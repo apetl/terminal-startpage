@@ -67,6 +67,14 @@
 	"search": {
 		"default": "https://kagi.com/search?q=",
 		"target": "_self"
+		"shortcutRegex": "([A-Za-z0-9]+) (.*)",
+		"shortcuts": [
+			{
+				"alias": "g",
+				"name": "Google Search",
+				"url": "https://google.com/search?q={}"
+			}
+		]
 	},
 	"sections": {
 		"list": [
