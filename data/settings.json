@@ -66,8 +66,7 @@
 	},
 	"search": {
 		"default": "https://kagi.com/search?q=",
-		"target": "_self",
-		"shortcutRegex": "([A-Za-z0-9]+) (.*)",
+		"target": "_self"
 	},
 	"sections": {
 		"list": [
