@@ -19,7 +19,7 @@
 		"url": "https://purple-axolotl.b-cdn.net/tender-memories.jpg",
 		"easing": "ease-in-out",
 		"fadeIn": true,
-		"blur": true
+		"blur": false
 	},
 	"terminal": {
 		"fixedHeight": true,
