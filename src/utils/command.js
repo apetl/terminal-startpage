@@ -24,8 +24,8 @@ export function RunCommand(command, settings) {
 
 function openFilteredLinks(command, settings) {
 	const filteredUrls = []
-	settings.sections.list.forEach((section) => {
-		section.links.forEach((link) => {
+	settings.sections?.list?.forEach((section) => {
+		section.links?.forEach((link) => {
 			if (link.name.toLowerCase().startsWith(command)) {
 				filteredUrls.push(link.url)
 			}
@@ -37,36 +37,37 @@ function openFilteredLinks(command, settings) {
 		DefaultSearch(command, settings)
 	} else {
 		filteredUrls.forEach((url, index) => {
-			const target = index === filterCount - 1 ? settings.urlLaunch.target : "_blank"
+			const target = index === filterCount - 1 ? settings.urlLaunch?.target : "_blank"
 			openLink(url, target)
 		})
 	}
 }
 
 export function DefaultSearch(buffer, settings) {
-	const searchEngine = settings.search.default
-	const target = settings.search.target
+	const searchEngine = settings.search?.default
+	const target = settings.search?.target
 
 	const encodedBuffer = encodeURIComponent(buffer)
-	openLink(searchEngine.replace("{}", encodedBuffer), target)
+	openLink(searchEngine?.replace("{}", encodedBuffer), target)
 }
 
 function tryParseSearchShortcut(command, settings) {
-	const commandPattern = new RegExp(settings.search.shortcutRegex, "g")
+	const commandPattern = new RegExp(settings.search?.shortcutRegex || "", "g")
 	let matchAll = command.matchAll(commandPattern)
 	matchAll = Array.from(matchAll)
 
 	if (matchAll.length === 0) return false
 
 	const regex_cmd = matchAll[0]
-	for (let i = 0; i < settings.search.shortcuts.length; i++) {
-		const commandData = settings.search.shortcuts[i]
+	const shortcuts = settings.search?.shortcuts || []
+	for (let i = 0; i < shortcuts.length; i++) {
+		const commandData = shortcuts[i]
 		const name = commandData.alias
 
 		if (name === regex_cmd[1]) {
 			const url = commandData.url
 			const encodedBuffer = encodeURIComponent(regex_cmd[2])
-			openLink(url.replace("{}", encodedBuffer), settings.urlLaunch.target)
+			openLink(url.replace("{}", encodedBuffer), settings.urlLaunch?.target)
 			return true
 		}
 	}

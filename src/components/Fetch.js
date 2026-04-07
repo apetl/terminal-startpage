@@ -12,10 +12,10 @@ const Fetch = ({ closeCallback }) => {
 	const [fetchData] = useFetchData()
 	const [icon, setIcon] = useState(null)
 
-	const titleColor = settings.fetch.titleColor
+	const titleColor = settings?.fetch?.titleColor || "yellow"
 	let mapping = {
 		version: fetchData.version,
-		theme: settings.theme.name,
+		theme: settings?.theme?.name || "Unknown",
 		time: fetchData.time,
 		date: fetchData.date,
 		osName: fetchData.osName,
@@ -27,17 +27,17 @@ const Fetch = ({ closeCallback }) => {
 	}
 
 	useEffect(() => {
-		// Fetch fetch image
+		if (!settings?.fetch?.image) return
 		fetchAsset(settings.fetch.image)
 			.then((data) => {
 				if (data) {
-					setIcon(data) // Set the image only if there is no warning message
+					setIcon(data)
 				}
 			})
 			.catch((error) => {
 				console.error("Failed to fetch image:", error)
 			})
-	}, [settings.fetch.image, setIcon])
+	}, [settings?.fetch?.image])
 
 	function getFetchData(index, item) {
 		const params = item.match(paramsPattern)
@@ -99,7 +99,7 @@ const Fetch = ({ closeCallback }) => {
 							</span>
 							<hr className="border-dashed" />
 							<ul className="mt-2">
-								{settings.fetch.data.map((item, index) => {
+								{settings?.fetch?.data?.map((item, index) => {
 									return getFetchData(index, item)
 								})}
 							</ul>

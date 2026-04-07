@@ -4,18 +4,20 @@ import useFetchData from "@/hooks/useFetchData"
 const Prompt = ({ command, showSymbol = true }) => {
 	const { settings } = useSettings()
 	const [browserData] = useFetchData()
-	const lower_username = settings.username.toLowerCase()
-	const promptSettings = settings.prompt
+	const lower_username = settings?.username?.toLowerCase() || "user"
+	const promptSettings = settings?.prompt || {}
 
 	return (
 		<span className="flex cursor-default">
-			<span className={`text-${promptSettings.userColor}`}>{lower_username}</span>
-			<span className={`text-${promptSettings.atColor}`}>@</span>
-			<span className={`text-${promptSettings.hostColor}`}>{browserData.browserLower}</span>
+			<span className={`text-${promptSettings.userColor || "green"}`}>{lower_username}</span>
+			<span className={`text-${promptSettings.atColor || "gray"}`}>@</span>
+			<span className={`text-${promptSettings.hostColor || "magenta"}`}>
+				{browserData.browserLower}
+			</span>
 			{showSymbol && (
-				<span className={`text-${promptSettings.promptColor} ml-2`}>
+				<span className={`text-${promptSettings.promptColor || "magenta"} ml-2`}>
 					{" "}
-					{promptSettings.promptSymbol}{" "}
+					{promptSettings.promptSymbol || "$"}{" "}
 				</span>
 			)}
 			{command && <span className="ml-2.5 text-textColor">{command}</span>}

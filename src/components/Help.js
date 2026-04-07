@@ -81,7 +81,7 @@ const Help = ({ closeCallback }) => {
 
 				<span className="block mt-line text-green">Search Aliases</span>
 				<ul>
-					{settings.search.shortcuts.map((cmd, index) => {
+					{settings.search?.shortcuts?.map((cmd, index) => {
 						return (
 							<li key={index}>
 								<span className="text-blue">{cmd.alias} </span> {cmd.name}

@@ -70,13 +70,13 @@ export const SettingsProvider = ({ children }) => {
 				})
 				.catch((error) => console.log(`Error fetching themes: ${error.message}`))
 
-			settings.sections.list.map((section) => {
-				section.links.map((link) => {
-					{
+			if (settings.sections?.list) {
+				settings.sections.list.forEach((section) => {
+					section.links?.forEach((link) => {
 						filterArr.push(link.name.toLowerCase())
-					}
+					})
 				})
-			})
+			}
 			setItems(filterArr)
 		}
 	}, [settings])

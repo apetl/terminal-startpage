@@ -18,11 +18,13 @@ const Terminal = () => {
 	}, [settings])
 
 	useEffect(() => {
-		if (settings.terminal.fixedHeight) {
-			const clientHeight = windowRef.current.clientHeight
-			setWindowHeight({
-				height: clientHeight
-			})
+		if (settings?.terminal?.fixedHeight) {
+			const clientHeight = windowRef.current?.clientHeight
+			if (clientHeight) {
+				setWindowHeight({
+					height: clientHeight
+				})
+			}
 		}
 
 		const handleKeyDown = (event) => {
@@ -58,7 +60,7 @@ const Terminal = () => {
 	return (
 		<div
 			className={`absolute w-full h-fit inset-x-0 inset-y-0 m-auto shadow-lg rounded-terminal bg-window-color max-w-terminal p-terminal ${
-				settings.terminal.windowGlow && "window-glow"
+				settings?.terminal?.windowGlow && "window-glow"
 			}`}
 			style={windowHeight}
 			ref={windowRef}>
