@@ -9,7 +9,7 @@ import { RunCommand } from "@/utils/command"
 
 const Terminal = () => {
 	const windowRef = useRef(null)
-	const [commands, setCommands] = useState("list")
+	const [commands, setCommands] = useState(["list"])
 	const [windowHeight, setWindowHeight] = useState({})
 	const { settings } = useSettings()
 
