@@ -67,7 +67,14 @@
 	"search": {
 		"default": "https://kagi.com/search?q=",
 		"target": "_self",
-		"shortcutRegex": "([A-Za-z0-9]+) (.*)"
+		"shortcutRegex": "([A-Za-z0-9]+) (.*)",
+		"shortcuts": [
+			{
+				"alias": "s",
+				"name": "searxng",
+				"url": "https://searx.apetl.com/search?q={}"
+			}
+		]
 	},
 	"sections": {
 		"list": [
@@ -82,19 +89,19 @@
 						"icon": "simple-icons:protonmail"
 					},
 					{
-						"name": "Habitica",
-						"url": "https://habitica.com",
-						"icon": "mdi:todo-add"
-					},
-					{
-						"name": "Calendar",
-						"url": "https://calendar.proton.me",
-						"icon": "simple-icons:protoncalendar"
-					},
-					{
 						"name": "Kagi",
 						"url": "https://kagi.com",
-						"icon": "fluent:search-16-filled"
+						"icon": "simple-icons:kagi"
+					},
+					{
+						"name": "Filen",
+						"url": "https://drive.filen.io",
+						"icon": "mdi:folder-key"
+					},
+					{
+						"name": "Ente",
+						"url": "https://web.ente.com/gallery",
+						"icon": "simple-icons:ente"
 					}
 				]
 			},
@@ -106,16 +113,16 @@
 					{
 						"name": "Youtube",
 						"url": "https://youtube.com",
-						"icon": "mdi:youtube"
+						"icon": "simple-icons:youtube"
 					},
 					{
-						"name": "YT Music",
-						"url": "https://music.youtube.com",
-						"icon": "mdi:spotify"
+						"name": "Anilist",
+						"url": "https://anilist.co/home",
+						"icon": "simple-icons:anilist"
 					},
 					{
 						"name": "Anime",
-						"url": "https://hianime.to/home/",
+						"url": "https://anikai.to/home/",
 						"icon": "tabler:brand-funimation"
 					},
 					{
@@ -126,83 +133,83 @@
 				]
 			},
 			{
-				"title": "Storage",
+				"title": "Self Host",
 				"color": "yellow",
 				"align": "left",
 				"links": [
 					{
-						"name": "Filen",
-						"url": "https://drive.filen.io",
-						"icon": "mdi:folder-key"
+						"name": "Karakeep",
+						"url": "https://kara.apetl.com",
+						"icon": "simple-icons:karakeep"
 					},
 					{
-						"name": "P Drive",
-						"url": "https://drive.proton.me",
-						"icon": "simple-icons:protondrive"
+						"name": "Commafeed",
+						"url": "https://rss.apetl.com",
+						"icon": "simple-icons:rss"
 					},
 					{
-						"name": "Ente",
-						"url": "https://web.ente.io/gallery",
-						"icon": "simple-icons:googlephotos"
+						"name": "Privatebin",
+						"url": "https://paste.apetl.com",
+						"icon": "simple-icons:pastebin"
 					},
 					{
-						"name": "G Drive",
-						"url": "https://drive.google.com",
-						"icon": "mdi:google-drive"
-					}
-				]
-			},
-			{
-				"title": "Study",
-				"color": "cyan",
-				"align": "left",
-				"links": [
-					{
-						"name": "Brightspace",
-						"url": "https://brightspace.brocku.ca/",
-						"icon": "uil:university"
-					},
-					{
-						"name": "Lofi",
-						"url": "https://www.youtube.com/@thesoulofrain5251",
-						"icon": "ri:music-fill"
-					},
-					{
-						"name": "Flocus",
-						"url": "https://app.flocus.com/",
-						"icon": "mdi:tilde"
-					},
-					{
-						"name": "Office",
-						"url": "https://www.office.com/",
-						"icon": "mdi:microsoft-office"
+						"name": "YOURLS",
+						"url": "https://s.apetl.com/admin",
+						"icon": "mdi:link-variant-minus"
 					}
 				]
 			},
 			{
 				"title": "Dev",
-				"color": "red",
+				"color": "cyan",
 				"align": "left",
 				"links": [
+					{
+						"name": "Gitea",
+						"url": "https://git.apetl.com",
+						"icon": "simple-icons:gitea"
+					},
 					{
 						"name": "Github",
 						"url": "https://github.com/",
 						"icon": "mingcute:github-fill"
 					},
 					{
-						"name": "GPT",
-						"url": "https://platform.openai.com/",
-						"icon": "simple-icons:openai"
+						"name": "Kagi Assistant",
+						"url": "https://kagi.com/assistant",
+						"icon": "mdi:robot-excited-outline"
 					},
 					{
-						"name": "Oracle",
-						"url": "https://cloud.oracle.com/",
-						"icon": "simple-icons:oracle"
-					},
-					{
-						"name": "Daily Dev",
+						"name": "Openrouter",
 						"url": "https://app.daily.dev",
-						"icon": "tabler:terminal"
+						"icon": "simple-icons:openrouter"
+					}
+				]
+			},
+			{
+				"title": "Infra",
+				"color": "red",
+				"align": "left",
+				"links": [
+					{
+						"name": "n8n",
+						"url": "https://n8n.apetl.com/",
+						"icon": "simple-icons:n8n"
+					},
+					{
+						"name": "Kuma",
+						"url": "https://kuma.apetl.com",
+						"icon": "simple-icons:uptimekuma"
+					},
+					{
+						"name": "Gotify",
+						"url": "https://push.apetl.com/",
+						"icon": "mdi:tilde"
+					},
+					{
+						"name": "Bunny",
+						"url": "https://dash.bunny.net",
+						"icon": "simple-icons:bunnydotnet"
 					}
 				]
 			},
@@ -212,24 +219,24 @@
 				"align": "left",
 				"links": [
 					{
-						"name": "Catppuccin",
-						"url": "https://github.com/catppuccin/catppuccin",
-						"icon": "solar:cat-bold"
+						"name": "Searxng",
+						"url": "https://searx.apetl.com",
+						"icon": "simple-icons:searxng"
 					},
 					{
-						"name": "Reddit",
-						"url": "https://www.reddit.com",
-						"icon": "mdi:reddit"
+						"name": "AOTY",
+						"url": "https://www.albumoftheyear.org/",
+						"icon": "mdi:album"
 					},
 					{
-						"name": "Netflix",
-						"url": "https://www.netflix.com/browse",
-						"icon": "mdi:netflix"
+						"name": "Habitica",
+						"url": "https://habitica.com/",
+						"icon": "simple-icons:habitica"
 					},
 					{
-						"name": "Bunny",
-						"url": "https://dash.bunny.net",
-						"icon": "mdi:rabbit"
+						"name": "Monkeytype",
+						"url": "https://monkeytype.com/",
+						"icon": "simple-icons:monkeytype"
 					}
 				]
 			}
