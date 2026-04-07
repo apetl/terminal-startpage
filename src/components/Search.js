@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react"
+import { useRef, useEffect, useState, useMemo, useCallback } from "react"
 import { RunCommand, DefaultSearch } from "@/utils/command"
 import Prompt from "@/components/Prompt"
 import { useSettings } from "@/context/settings"
@@ -11,50 +11,54 @@ const Search = ({ commandChange, selectionChange }) => {
 	const [inputFocus, setInputFocus] = useState(false)
 
 	const [command, setCommand] = useState("")
-	const [filteredItems, setFilteredItems] = useState([])
 	const [selection, setSelection] = useState("")
-	const [suggestion, setSuggestion] = useState("")
 
-	// Focus on input
+	const filteredItems = useMemo(() => {
+		if (command === "") return []
+		return items.filter((item) => item.startsWith(command))
+	}, [command, items])
+
+	const suggestion = filteredItems.length > 0 ? filteredItems[0] : ""
+
+	useEffect(() => {
+		commandChange(command)
+		if (command === "") {
+			selectionChange("")
+		}
+	}, [command, commandChange, selectionChange])
+
+	useEffect(() => {
+		if (filteredItems.length <= 1) selectionChange("")
+	}, [filteredItems, selectionChange])
+
 	useEffect(() => {
 		setTimeout(() => inputRef.current.focus(), 0)
 	}, [inputFocus])
 
-	// Key Down
-	useEffect(() => {
-		const handleKeyDown = (e) => {
+	const handleKeyDown = useCallback(
+		(e) => {
 			const isCtrlPressed = e.metaKey || e.ctrlKey
-			// Submit prompt
 			if (e.key === "Enter") {
 				const search_function = isCtrlPressed ? DefaultSearch : RunCommand
 				search_function(command, settings)
-			}
-			// Clear prompt
-			else if (isCtrlPressed && e.code === "KeyC") {
+			} else if (isCtrlPressed && e.code === "KeyC") {
 				if (settings.prompt.ctrlC) {
 					inputRef.current.value = ""
 					selectionChange("")
 					commandChange("")
-					setSuggestion("")
 				}
-			}
-			// Auto Complete
-			else if (e.key === "ArrowRight") {
+			} else if (e.key === "ArrowRight") {
 				if (suggestion !== "") {
 					e.preventDefault()
 					inputRef.current.value = suggestion
 					setCommand(suggestion)
 					commandChange(suggestion)
 					selectionChange("")
-					setSuggestion("")
 				}
-			}
-			// Previous Selection
-			else if (e.shiftKey && e.key === "Tab") {
+			} else if (e.shiftKey && e.key === "Tab") {
 				e.preventDefault()
 
-				if (command === "") return
-				if (filteredItems.length === 0) return
+				if (command === "" || filteredItems.length === 0) return
 
 				let idx = -1
 				if (selection && selection !== "")
@@ -63,15 +67,11 @@ const Search = ({ commandChange, selectionChange }) => {
 				idx = (idx + filteredItems.length - 1) % filteredItems.length
 				const selectedItem = filteredItems[idx]
 				setSelection(selectedItem)
-				setSuggestion(selectedItem)
 				selectionChange(selectedItem)
-			}
-			// Next Selection
-			else if (e.key === "Tab") {
+			} else if (e.key === "Tab") {
 				e.preventDefault()
 
-				if (command === "") return
-				if (filteredItems.length === 0) return
+				if (command === "" || filteredItems.length === 0) return
 
 				let idx = -1
 				if (selection && selection !== "")
@@ -80,42 +80,18 @@ const Search = ({ commandChange, selectionChange }) => {
 				idx = (idx + 1) % filteredItems.length
 				const selectedItem = filteredItems[idx]
 				setSelection(selectedItem)
-				setSuggestion(selectedItem)
 				selectionChange(selectedItem)
 			}
-		}
+		},
+		[command, suggestion, selection, filteredItems, settings, commandChange, selectionChange]
+	)
 
+	useEffect(() => {
 		document.addEventListener("keydown", handleKeyDown)
 		return () => {
 			document.removeEventListener("keydown", handleKeyDown)
 		}
-	}, [command, suggestion, selection, filteredItems, settings])
-
-	// Filter possible items
-	useEffect(() => {
-		commandChange(command)
-
-		// Set possible filtered items
-		setFilteredItems([])
-		if (command === "") {
-			selectionChange("")
-		} else {
-			const filtered = items.filter((item) => item.startsWith(command))
-			setFilteredItems(filtered)
-		}
-	}, [command, items])
-
-	// Set suggestions
-	useEffect(() => {
-		if (filteredItems.length <= 1) selectionChange("")
-
-		// Set suggestion
-		if (filteredItems.length === 0) {
-			setSuggestion("")
-		} else {
-			setSuggestion(filteredItems[0])
-		}
-	}, [filteredItems])
+	}, [handleKeyDown])
 
 	return (
 		<div id="search" className="flex">

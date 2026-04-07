@@ -2,10 +2,28 @@ import fs from "fs"
 import path from "path"
 
 export default function handler(req, res) {
+	if (req.method !== "GET") {
+		return res.status(405).json({ error: "Method not allowed" })
+	}
+
 	const { file } = req.query
 
-	// Construct the full path to the file
-	const filePath = path.join(process.cwd(), "data", file)
+	if (!file || typeof file !== "string") {
+		return res.status(400).json({ warning: "File parameter is required" })
+	}
+
+	const normalizedFile = path.normalize(file)
+	if (normalizedFile.includes("..") || path.isAbsolute(normalizedFile)) {
+		return res.status(403).json({ warning: "Access denied" })
+	}
+
+	const dataDir = path.join(process.cwd(), "data")
+	const filePath = path.join(dataDir, normalizedFile)
+
+	const resolvedPath = path.resolve(filePath)
+	if (!resolvedPath.startsWith(path.resolve(dataDir))) {
+		return res.status(403).json({ warning: "Access denied" })
+	}
 
 	// Determine the MIME type of the file based on its extension
 	let mimeType

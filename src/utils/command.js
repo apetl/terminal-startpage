@@ -23,24 +23,20 @@ export function RunCommand(command, settings) {
 }
 
 function openFilteredLinks(command, settings) {
-	let filteredUrls = []
-	settings.sections.list.map((section) => {
-		{
-			section.links.map((link) => {
-				{
-					if (link.name.toLowerCase().startsWith(command)) {
-						filteredUrls.push(link.url)
-					}
-				}
-			})
-		}
+	const filteredUrls = []
+	settings.sections.list.forEach((section) => {
+		section.links.forEach((link) => {
+			if (link.name.toLowerCase().startsWith(command)) {
+				filteredUrls.push(link.url)
+			}
+		})
 	})
 
-	let filterCount = filteredUrls.length
+	const filterCount = filteredUrls.length
 	if (filterCount === 0) {
 		DefaultSearch(command, settings)
 	} else {
-		filteredUrls.map((url, index) => {
+		filteredUrls.forEach((url, index) => {
 			const target = index === filterCount - 1 ? settings.urlLaunch.target : "_blank"
 			openLink(url, target)
 		})
@@ -56,23 +52,21 @@ export function DefaultSearch(buffer, settings) {
 }
 
 function tryParseSearchShortcut(command, settings) {
-	// Split command and query seperated by shortcut regex
-	var commandPattern = new RegExp(settings.search.shortcutRegex, "g")
+	const commandPattern = new RegExp(settings.search.shortcutRegex, "g")
 	let matchAll = command.matchAll(commandPattern)
 	matchAll = Array.from(matchAll)
 
 	if (matchAll.length === 0) return false
 
-	let regex_cmd = matchAll[0]
-	for (var i = 0; i < settings.search.shortcuts.length; i++) {
+	const regex_cmd = matchAll[0]
+	for (let i = 0; i < settings.search.shortcuts.length; i++) {
 		const commandData = settings.search.shortcuts[i]
 		const name = commandData.alias
 
 		if (name === regex_cmd[1]) {
 			const url = commandData.url
-
 			const encodedBuffer = encodeURIComponent(regex_cmd[2])
-			openLink(url.replace("{}", encodedBuffer, settings.urlLaunch.target))
+			openLink(url.replace("{}", encodedBuffer), settings.urlLaunch.target)
 			return true
 		}
 	}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react"
+import { useEffect, useState, useRef } from "react"
 import AceEditor from "react-ace"
 import "ace-builds/src-noconflict/mode-json"
 import "one-theme-ace/one-dark"

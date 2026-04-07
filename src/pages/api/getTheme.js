@@ -2,6 +2,10 @@ import fs from "fs"
 import path from "path"
 
 export default function handler(req, res) {
+	if (req.method !== "GET") {
+		return res.status(405).json({ error: "Method not allowed" })
+	}
+
 	const themeName = req.query.name
 	const themesDirectory = path.join(process.cwd(), "data", "themes")
 
@@ -13,8 +17,22 @@ export default function handler(req, res) {
 	}
 
 	if (themeName) {
-		// If a theme name is provided, return the specified theme
+		if (
+			typeof themeName !== "string" ||
+			themeName.includes("..") ||
+			themeName.includes("/") ||
+			themeName.includes("\\") ||
+			path.isAbsolute(themeName)
+		) {
+			return res.status(400).json({ message: "Invalid theme name" })
+		}
+
 		const filePath = path.join(themesDirectory, `${themeName}.json`)
+
+		const resolvedPath = path.resolve(filePath)
+		if (!resolvedPath.startsWith(path.resolve(themesDirectory))) {
+			return res.status(403).json({ message: "Access denied" })
+		}
 
 		if (!fs.existsSync(filePath)) {
 			res.status(200).json({ message: `Theme ${themeName} not found` })

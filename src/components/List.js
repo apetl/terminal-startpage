@@ -1,9 +1,9 @@
-import React, { use, useEffect, useState } from "react"
+import { useState, memo } from "react"
 import Link from "@/components/Link"
 import Search from "@/components/Search"
 import { useSettings } from "@/context/settings"
 
-const Section = ({ section, filter, selection }) => {
+const Section = memo(({ section, filter, selection }) => {
 	const alignment = section.align || "left"
 	return (
 		<div className={`mb-4 align-${alignment}`}>
@@ -12,23 +12,21 @@ const Section = ({ section, filter, selection }) => {
 			</h2>
 
 			<ul>
-				{section.links.map((link, index) => {
-					{
-						return (
-							<Link
-								className="font-normal"
-								key={index}
-								linkData={link}
-								filter={filter}
-								selection={selection}
-							/>
-						)
-					}
-				})}
+				{section.links.map((link, index) => (
+					<Link
+						className="font-normal"
+						key={index}
+						linkData={link}
+						filter={filter}
+						selection={selection}
+					/>
+				))}
 			</ul>
 		</div>
 	)
-}
+})
+
+Section.displayName = "Section"
 
 const List = () => {
 	const { settings } = useSettings()

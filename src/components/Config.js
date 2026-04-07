@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import { useEffect, useState, useCallback } from "react"
 import Prompt from "@/components/Prompt"
 import { isURL } from "@/utils/isURL"
 import { useSettings } from "@/context/settings"
@@ -13,6 +13,68 @@ const Config = ({ commands, closeCallback }) => {
 	const CodeEditor = dynamic(() => import("@/components/Editor"), {
 		ssr: false
 	})
+
+	const appendToLog = useCallback((text, type) => {
+		setConsoleLog((consoleLog) => [...consoleLog, { type: type, text: text }])
+	}, [])
+
+	const importConfig = useCallback(
+		(url) => {
+			appendToLog("Fetching settings from remote", "success")
+			fetch(url)
+				.then((res) => {
+					if (!res.ok) {
+						appendToLog("File not found on URL", "error")
+						throw new Error("Failed to fetch")
+					}
+
+					return res.json()
+				})
+				.then((data) => {
+					setSettings(data)
+					appendToLog("Successfully imported configuration file", "success")
+				})
+				.catch((err) => {
+					appendToLog(err, true)
+				})
+				.finally(() => {
+					setDone(true)
+				})
+		},
+		[appendToLog, setSettings]
+	)
+
+	const resetConfig = useCallback(() => {
+		appendToLog("Reverted back to default configuration", "success")
+		resetSettings()
+		setDone(true)
+	}, [appendToLog, resetSettings])
+
+	const editConfig = useCallback(() => {
+		setIsEditMode(true)
+	}, [])
+
+	const usageExample = useCallback(() => {
+		appendToLog("Usage:", "title")
+		appendToLog(["config help", "Show usage examples"], "help")
+		appendToLog(["config theme", "List available themes"], "help")
+		appendToLog(["config theme <theme-name>", "Switch theme"], "help")
+		appendToLog(["config import <url>", "Import remote config"], "help")
+		appendToLog(["config edit", "Edit local config"], "help")
+		appendToLog(["config reset", "Reset to default config"], "help")
+		setDone(true)
+	}, [appendToLog])
+
+	const setTheme = useCallback(
+		(themeData, themeName) => {
+			const newSettings = Object.assign({}, settings)
+			newSettings.theme = themeData
+			setSettings(newSettings)
+			appendToLog("Theme set to " + themeName, "success")
+			setDone(true)
+		},
+		[settings, setSettings, appendToLog]
+	)
 
 	useEffect(() => {
 		setConsoleLog([])
@@ -78,71 +140,7 @@ const Config = ({ commands, closeCallback }) => {
 			appendToLog("Invalid config command: " + commands.join(" "), "error")
 			usageExample()
 		}
-	}, [])
-
-	const importConfig = (url) => {
-		appendToLog("Fetching settings from remote", "success")
-		fetch(url)
-			.then((res) => {
-				if (!res.ok) {
-					appendToLog("File not found on URL", "error")
-					throw Error(message)
-				}
-
-				return res.json()
-			})
-			.then((data) => {
-				setSettings(data)
-				appendToLog("Successfully imported configuration file", "success")
-			})
-			.catch((err) => {
-				appendToLog(err, true)
-			})
-			.finally(() => {
-				setDone(true)
-			})
-	}
-
-	const resetConfig = () => {
-		appendToLog("Reverted back to default configuration", "success")
-		resetSettings()
-		setDone(true)
-	}
-
-	const editConfig = () => {
-		setIsEditMode(true)
-	}
-
-	const usageExample = () => {
-		appendToLog("Usage:", "title")
-		appendToLog(["config help", "Show usage examples"], "help")
-		appendToLog(["config theme", "List available themes"], "help")
-		appendToLog(["config theme <theme-name>", "Switch theme"], "help")
-		appendToLog(["config import <url>", "Import remote config"], "help")
-		appendToLog(["config edit", "Edit local config"], "help")
-		appendToLog(["config reset", "Reset to default config"], "help")
-		setDone(true)
-	}
-
-	const invalidTheme = (themeName) => {
-		appendToLog("Invalid theme: " + commands[2], "error")
-		appendToLog("Usage:", "title")
-		appendToLog(["config theme", "Show available themes"], "help")
-		appendToLog(["config theme <theme>", "Set theme"], "help")
-		setDone(true)
-	}
-
-	function setTheme(themeData, themeName) {
-		let newSettings = Object.assign({}, settings)
-		newSettings.theme = themeData
-		setSettings(newSettings)
-		appendToLog("Theme set to " + themeName, "success")
-		setDone(true)
-	}
-
-	const appendToLog = (text, type) => {
-		setConsoleLog((consoleLog) => [...consoleLog, { type: type, text: text }])
-	}
+	}, [commands, importConfig, resetConfig, editConfig, usageExample, appendToLog, setTheme])
 
 	function closeConfigWindow() {
 		if (isEditMode) return

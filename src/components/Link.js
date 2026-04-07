@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { useSettings } from "@/context/settings"
 import { Icon } from "@iconify/react"
 
@@ -22,12 +22,11 @@ const Link = ({ linkData, filter, selection }) => {
 		} else {
 			setHidden(false)
 		}
-	}, [filter, lower_name, target, url]),
-		[filter]
+	}, [filter, lower_name])
 
 	useEffect(() => {
 		setSelected(lower_name === selection)
-	}, [selection])
+	}, [selection, lower_name])
 
 	return (
 		<li className="-my-2 -ml-3">

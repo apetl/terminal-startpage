@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react"
+import { useEffect, useState, useRef, useCallback } from "react"
 import List from "@/components/List"
 import Help from "@/components/Help"
 import Config from "@/components/Config"
@@ -12,6 +12,10 @@ const Terminal = () => {
 	const [commands, setCommands] = useState("list")
 	const [windowHeight, setWindowHeight] = useState({})
 	const { settings } = useSettings()
+
+	const closeWindow = useCallback(() => {
+		RunCommand("list", settings)
+	}, [settings])
 
 	useEffect(() => {
 		if (settings.terminal.fixedHeight) {
@@ -33,11 +37,7 @@ const Terminal = () => {
 			unsubscribe("command", (e) => setCommands(e.detail))
 			document.removeEventListener("keydown", handleKeyDown)
 		}
-	}, [settings])
-
-	const closeWindow = () => {
-		RunCommand("list", settings)
-	}
+	}, [settings, closeWindow])
 
 	const getWindow = () => {
 		const cmd = commands[0]
