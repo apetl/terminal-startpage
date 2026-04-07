@@ -1,5 +1,7 @@
 const { version } = require("./package.json")
 
+const { PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD } = require("next/constants")
+
 const rulesToProcess = [/\.m?js/, /\.(js|cjs|mjs)$/].map(String)
 const dirToIgnore = /tools/
 
@@ -18,17 +20,6 @@ const nextConfig = {
 			}
 		]
 	},
-	headers: () => [
-		{
-			source: "/:path*",
-			headers: [
-				{
-					key: "Cache-Control",
-					value: "no-store"
-				}
-			]
-		}
-	],
 	webpack(config) {
 		config.resolve.fallback = {
 			// if you miss it, all the other options in fallback, specified
@@ -52,4 +43,34 @@ const nextConfig = {
 	}
 }
 
-module.exports = nextConfig
+module.exports = async (phase) => {
+	let config = nextConfig
+
+	if (phase === PHASE_DEVELOPMENT_SERVER) {
+		config = {
+			...config,
+			headers: () => [
+				{
+					source: "/:path*",
+					headers: [
+						{
+							key: "Cache-Control",
+							value: "no-store"
+						}
+					]
+				}
+			]
+		}
+	}
+
+	if (phase === PHASE_DEVELOPMENT_SERVER || phase === PHASE_PRODUCTION_BUILD) {
+		const withSerwist = (await import("@serwist/next")).default({
+			swSrc: "src/sw.js",
+			swDest: "public/sw.js",
+			reloadOnOnline: false
+		})
+		return withSerwist(config)
+	}
+
+	return config
+}

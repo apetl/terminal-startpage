@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react"
+import { useEffect, useState } from "react"
 import Head from "next/head"
 import { useSettings } from "@/context/settings"
 import { fetchAsset } from "@/utils/fetchAsset"
@@ -10,13 +10,10 @@ const Meta = () => {
 	const { settings } = useSettings()
 
 	useEffect(() => {
-		// Set title
-		setTitle(settings.username + " Start Page")
+		setTitle(settings.title ? settings.title : settings.username + " Start Page")
 
-		// Return if there is no icon
 		if (!settings.fetch.image) return
 
-		// Set icon type for favicon
 		const iconExtension = settings.fetch.image.split(".").pop()
 		switch (iconExtension) {
 			case "svg":
@@ -29,7 +26,6 @@ const Meta = () => {
 				setIconType("na")
 		}
 
-		// Fetch icon image
 		fetchAsset(settings.fetch.image)
 			.then((data) => {
 				if (data) {
@@ -39,7 +35,7 @@ const Meta = () => {
 			.catch((error) => {
 				console.error("Failed to fetch icon:", error)
 			})
-	}, [settings.fetch.image, settings.username])
+	}, [settings.fetch.image, settings.username, settings.title])
 
 	return (
 		<Head>
