@@ -5,8 +5,8 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-COPY package.json package-lock.json* ./
-RUN npm ci
+COPY package.json yarn.lock* ./
+RUN yarn install --frozen-lockfile
 
 # Rebuild the source code only when needed
 FROM base AS builder
@@ -23,7 +23,7 @@ ENV BUILD_MODE=docker
 ENV NEXT_TELEMETRY_DISABLED=1
 
 # Build the node project
-RUN npm run build
+RUN yarn build
 
 # Production image, copy all the files and run next
 FROM base AS runner
