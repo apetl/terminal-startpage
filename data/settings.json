@@ -204,7 +204,7 @@
 					{
 						"name": "Gotify",
 						"url": "https://push.apetl.com/",
-						"icon": "mdi:tilde"
+						"icon": "simple-icons:go"
 					},
 					{
 						"name": "Bunny",
@@ -231,7 +231,7 @@
 					{
 						"name": "Habitica",
 						"url": "https://habitica.com/",
-						"icon": "simple-icons:habitica"
+						"icon": "mdi:checkbox-marked-circle-auto-outline"
 					},
 					{
 						"name": "Monkeytype",
